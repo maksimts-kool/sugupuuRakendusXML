@@ -1,0 +1,39 @@
+@using System.Xml.Linq
+@model XDocument
+@{
+    ViewData["Title"] = "Sugupuu";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@Html.Raw(ViewBag.Puu)
+
+<h2>Tabel</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nimi</th>
+            <th>Aasta</th>
+            <th>Vanus</th>
+            <th>1. täht</th>
+            <th>Viimane täht</th>
+            <th>Tähtede arv</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model.Descendants("inimene"))
+        {
+            var nimi = (string)i.Element("nimi");
+            var synd = (int)i.Attribute("synd");
+            var tahed = nimi.Replace(" ", "");
+            <tr>
+                <td>@nimi</td>
+                <td>@synd</td>
+                <td>@(DateTime.Now.Year - synd)</td>
+                <td>@tahed[0]</td>
+                <td>@tahed[^1]</td>
+                <td>@tahed.Length</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inimene synd="1955">
+  <nimi>Aleksander</nimi>
+  <lapsed>
+    <inimene synd="1980">
+      <nimi>Sergei</nimi>
+      <lapsed>
+        <inimene synd="2008">
+          <nimi>Maksim</nimi>
+        </inimene>
+        <inimene synd="2012">
+          <nimi>Anastasia</nimi>
+        </inimene>
+      </lapsed>
+    </inimene>
+    <inimene synd="1983">
+      <nimi>Olga</nimi>
+      <lapsed>
+        <inimene synd="2006">
+          <nimi>Dmitri</nimi>
+        </inimene>
+      </lapsed>
+    </inimene>
+  </lapsed>
+</inimene>

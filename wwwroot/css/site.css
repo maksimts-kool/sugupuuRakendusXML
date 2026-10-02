@@ -29,3 +29,17 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+.xml-kood {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.xml-kood code { color: inherit; }
+.xml-silt { color: #569cd6; }
+.xml-atribuut { color: #9cdcfe; }
+.xml-vaartus { color: #ce9178; }
+.xml-kommentaar { color: #6a9955; }

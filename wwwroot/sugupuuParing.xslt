@@ -46,5 +46,25 @@
         </li>
       </xsl:for-each>
     </ul>
+    <h3>Värvime nimed pikkusega rohkem kui 7</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nimi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <xsl:for-each select="//inimene">
+          <tr>
+            <xsl:if test="string-length(nimi) &gt; 7">
+              <td style="color: red; font-weight: bold;"><xsl:value-of select="nimi"/></td>
+            </xsl:if>
+            <xsl:if test="string-length(nimi) &lt;= 7">
+              <td><xsl:value-of select="nimi"/></td>
+            </xsl:if>
+          </tr>
+        </xsl:for-each>
+      </tbody>
+    </table>
   </xsl:template>
 </xsl:stylesheet>

@@ -18,6 +18,20 @@ public class HomeController : Controller
 
     public IActionResult Sugupuu()
     {
+        ViewData["Title"] = "Sugupuu";
+        ViewData["XmlFail"] = "ElisavetaSugupuu.xml";
+        return View();
+    }
+
+    public IActionResult MinuSugupuu()
+    {
+        ViewData["Title"] = "Minu sugupuu";
+        ViewData["XmlFail"] = "MinuSugupuu.xml";
+        return View("Sugupuu");
+    }
+
+    public IActionResult XmlSkeem()
+    {
         return View();
     }
 

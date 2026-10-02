@@ -1,10 +1,8 @@
 @using System.Xml.Linq
 @using System.Xml.Xsl
 @{
-    ViewData["Title"] = "Sugupuu";
-
     var wwwroot = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
-    var xmlFail = System.IO.Path.Combine(wwwroot, "ElisavetaSugupuu.xml");
+    var xmlFail = System.IO.Path.Combine(wwwroot, (string)ViewData["XmlFail"]);
 
     var xslt = new XslCompiledTransform();
     xslt.Load(System.IO.Path.Combine(wwwroot, "sugupuuParing.xslt"));

@@ -1,0 +1,13 @@
+@using System.Xml.Xsl
+@{
+    ViewData["Title"] = "Reisid";
+
+    var wwwroot = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+
+    var xslt = new XslCompiledTransform();
+    xslt.Load(System.IO.Path.Combine(wwwroot, "reisidParing.xslt"));
+    using var writer = new StringWriter();
+    xslt.Transform(System.IO.Path.Combine(wwwroot, "reisid.xml"), null, writer);
+}
+
+@Html.Raw(writer.ToString())

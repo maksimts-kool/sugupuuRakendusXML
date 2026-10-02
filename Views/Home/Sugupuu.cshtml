@@ -1,12 +1,24 @@
 @using System.Xml.Linq
-@model XDocument
+@using System.Xml.Xsl
+@inject IWebHostEnvironment Env
 @{
     ViewData["Title"] = "Sugupuu";
+
+    var xmlFail = System.IO.Path.Combine(Env.WebRootPath, "ElisavetaSugupuu.xml");
+
+    var xslt = new XslCompiledTransform();
+    xslt.Load(System.IO.Path.Combine(Env.WebRootPath, "sugupuuParing.xslt"));
+    var args = new XsltArgumentList();
+    args.AddParam("aasta", "", DateTime.Now.Year);
+    using var writer = new StringWriter();
+    xslt.Transform(xmlFail, args, writer);
+
+    var puu = XDocument.Load(xmlFail);
 }
 
 <h1>@ViewData["Title"]</h1>
 
-@Html.Raw(ViewBag.Puu)
+@Html.Raw(writer.ToString())
 
 <h2>Tabel</h2>
 <table class="table table-striped">
@@ -21,7 +33,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var i in Model.Descendants("inimene"))
+        @foreach (var i in puu.Descendants("inimene"))
         {
             var nimi = (string)i.Element("nimi");
             var synd = (int)i.Attribute("synd");

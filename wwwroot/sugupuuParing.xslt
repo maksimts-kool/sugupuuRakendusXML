@@ -8,25 +8,6 @@
     <ul class="sugupuu">
       <xsl:apply-templates select="inimene"/>
     </ul>
-    <h2>Esitähed</h2>
-    <ol>
-      <xsl:for-each select="//inimene">
-        <li>
-          <xsl:value-of select="substring(nimi, 1, 1)"/>
-        </li>
-      </xsl:for-each>
-    </ol>
-    <h2>Nimed ja tähtede arv</h2>
-    <ol>
-      <xsl:for-each select="//inimene">
-        <li>
-          <xsl:value-of select="nimi"/>
-          <xsl:text> - </xsl:text>
-          <xsl:value-of select="string-length(translate(nimi, ' ', ''))"/>
-          <xsl:text> tähte</xsl:text>
-        </li>
-      </xsl:for-each>
-    </ol>
   </xsl:template>
 
   <xsl:template match="inimene">

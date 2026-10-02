@@ -1,13 +1,13 @@
 @using System.Xml.Linq
 @using System.Xml.Xsl
-@inject IWebHostEnvironment Env
 @{
     ViewData["Title"] = "Sugupuu";
 
-    var xmlFail = System.IO.Path.Combine(Env.WebRootPath, "ElisavetaSugupuu.xml");
+    var wwwroot = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+    var xmlFail = System.IO.Path.Combine(wwwroot, "ElisavetaSugupuu.xml");
 
     var xslt = new XslCompiledTransform();
-    xslt.Load(System.IO.Path.Combine(Env.WebRootPath, "sugupuuParing.xslt"));
+    xslt.Load(System.IO.Path.Combine(wwwroot, "sugupuuParing.xslt"));
     var args = new XsltArgumentList();
     args.AddParam("aasta", "", DateTime.Now.Year);
     using var writer = new StringWriter();
@@ -37,11 +37,12 @@
         {
             var nimi = (string)i.Element("nimi");
             var synd = (int)i.Attribute("synd");
+            var surm = (int?)i.Attribute("surm");
             var tahed = nimi.Replace(" ", "");
             <tr>
                 <td>@nimi</td>
                 <td>@synd</td>
-                <td>@(DateTime.Now.Year - synd)</td>
+                <td>@(surm.HasValue ? $"oli {surm.Value - synd}" : (DateTime.Now.Year - synd).ToString())</td>
                 <td>@tahed[0]</td>
                 <td>@tahed[^1]</td>
                 <td>@tahed.Length</td>

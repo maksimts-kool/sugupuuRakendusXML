@@ -5,9 +5,9 @@
   <xsl:template match="/">
     <h2>Lennureisid</h2>
 
-    <!-- ainult lennureisid, kõrgema hinnanguga reis eespool -->
+    <!-- ainult lennureisid, kõrgema kestvusega reis eespool -->
     <xsl:for-each select="reisid/reis[transport = 'lennuk']">
-      <xsl:sort select="hinnang" data-type="number" order="descending"/>
+      <xsl:sort select="suund/kestvus" data-type="number" order="descending"/>
 
       <h1><xsl:value-of select="suund/riik"/></h1>
       <ul>
@@ -48,10 +48,11 @@
       </thead>
       <tbody>
         <xsl:for-each select="reisid/reis">
+        <xsl:sort select="suund/kestvus" data-type="number" order="descending"/>
           <tr>
             <!-- üle rea erinev taustavärv -->
             <xsl:if test="position() mod 2 = 1">
-              <xsl:attribute name="style">background-color: #cfe8ff;</xsl:attribute>
+              <xsl:attribute name="style">--bs-table-bg: #cee7ff;</xsl:attribute>
             </xsl:if>
             <td><xsl:value-of select="suund/riik"/></td>
             <td><xsl:value-of select="suund/kestvus"/> päeva</td>

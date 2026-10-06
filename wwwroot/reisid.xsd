@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xs:element name="reisid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="reis" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="suund">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="riik" type="xs:string"/>
+                    <xs:element name="kestvus" type="xs:positiveInteger"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="transport" type="xs:string"/>
+              <xs:element name="majutus" type="xs:string"/>
+              <xs:element name="ekskursioonid" type="xs:decimal"/>
+              <xs:element name="muudKulud" type="xs:decimal"/>
+              <xs:element name="hinnang" type="xs:decimal"/>
+              <xs:element name="reisihind" type="xs:decimal"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
